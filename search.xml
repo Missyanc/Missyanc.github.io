@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F09%2F12%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[阿里云服务器添加安全组规则]]></title>
+    <url>%2F2018%2F09%2F11%2F%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E7%BB%84%E8%A7%84%E5%88%99%2F</url>
+    <content type="text"><![CDATA[阿里云服务器添加安全组规则 先登录你的阿里云并且进入到管理控制台 找到安全组，点击进入，具体操作如下图： 进入安全组之后，点击配置规则，具体操作如下图： 开始配置规则，如下图所示： 点击确定，添加安全组规则完成]]></content>
+      <tags>
+        <tag>云服务器</tag>
+        <tag>技术学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[阿里云服务器配置Hexo最详细教程]]></title>
+    <url>%2F2018%2F09%2F11%2F%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEHexo%E6%9C%80%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[记录自己的整个 Hexo 安装 写在前面，本人用的是阿里的云服务器与 Hexo 搭建的个人博客，可以与 git 网站关联，代码可以实时上传在 git 上，云服务器是基于 Linux 系统的，如果只是单纯的想部署到云服务器上可以忽略以下的 git 相关部分，以后再试着整个全部部署在 git bash 上 这整个过程我花了好几天摸索搞好，现在写下来记录好。做这个博客本人的初衷是记录下和家人与所爱的人发生的事，以及自己学习的历程 一、环境搭建 第一步我们先安装 Node.js ，我是选择的下载压缩包然后解压然后安装 在官网下载压缩包：1wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz 解压缩：1tar -zxvf node-v8.1.2.tar.gz 安装 Node.js：1nvm install stable 第二步就是安装 Hexo 1nvm install stable &emsp;&emsp;以上的步骤的目录的可以自选，但是最好在 root 目录下 二、创建我们的完整的博客目录 确保你的 Linux 云服务器上装好了 git，如果没有请装上 git ，git安装及相关操作教程请看廖雪峰的 git 教程 第一步是选择好目录，挑好了你的建博客的地址。我们先要建 git 本地仓库的目录并且初始化 git 本地仓库 1mkdir git_blog 在该目录下初始化 git 本地仓库： 1git init 在这个 git 本地仓库的目录下建好 Hexo 博客目录并且初始化 1mkdir Hexo 1hexo init &emsp;&emsp;此时 root/git_blog 目录的文件目录结构如下： 三、测试我们的 Hexo 看能否正常打开]]></content>
+      <tags>
+        <tag>云服务器</tag>
+        <tag>技术学习</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2F2018%2F09%2F11%2Ftags%2F</url>
+    <content type="text"><![CDATA[4/27/2018 昨晚睡太晚了，今天醒来九点了，需要变得更好，早睡早起吃早点 起床洗漱洗衣服洗头,9：50完成 今天的事情还有数值分析没有完成哦 还有单词没有背 当然不能忘了今天的机器学习 晚上九点的数值分析考试还在等着我 还想好好复习学习一下数据库 给小米买个小玩具 噢还要买防晒霜 我还在学习微信小程序哦 写了一份轰趴计划书! ==毛毛虫来大姨妈了，毛毛虫肚子很疼很疼，我要给毛毛虫弄红糖水喝。我好困我需要咖啡，我给毛毛虫买了姜糖!== 我在想… 软件工程导论是个水课吗，有个想法是在有道云笔记把他的ppt内容全部搞下来。 要更好的安排时间了。 英语真的太菜了。 想健身练大肌肉… 听爸爸说小米一个人在家还生病了，我心里面有点不舒服，我要给小米买个小玩具! 多写代码多写代码，安静下来写代码 怎么才能让毛毛虫来大姨妈的时候舒服点 要安静下来做事情，不能浮躁 &emsp;&emsp;下午心里面有点哽塞，给小米打了视频，家里面就小米一个人，好孤单的，她不像小时候的我们，外婆家很近，去的话也就五分钟就到了，小伙伴也是到处都是，从小就没体会到孤单的感觉吧 &emsp;&emsp;今天下午晚上不自觉觉得心里面很堵，不知道是什么原因。深刻的感觉到自己的无能，又不想拼命去干一些事情。一点点不如意都会让我觉得不开心，这是不对的，好像只有电脑在我面前，我在干点什么我才会心安，很多事情是没有对错的，我也无法得知现在做的事情会对我产生什么样的影响，不知是好是坏。 &emsp;&emsp;意识到自己的心态还是很渣，不管什么吧，随遇而安，用一颗平常心去对待，这个世界还有很多值得我用一颗充满热情的心去对待的东西和人，这就足够了。 &emsp;&emsp;每个人都是有逆鳞的，就是毛毛虫也不例外，龙有逆鳞，触之必怒。 &emsp;&emsp;每个人也都有内心最柔软的地方，触之便是秋波烟雨，而我的便是我的亲人和毛毛虫。 铁甲依然在！ 今晚又熬夜了…一点… ps.我给小米买了磁铁的玩具!]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[我爱的言草右小姐]]></title>
+    <url>%2F2018%2F09%2F11%2F%E6%88%91%E7%88%B1%E7%9A%84%E8%A8%80%E8%8D%89%E5%8F%B3%E5%B0%8F%E5%A7%90%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>yanc</tag>
+        <tag>myLove</tag>
+      </tags>
+  </entry>
+</search>
