@@ -19,9 +19,9 @@
     <url>%2F2018%2F09%2F11%2F%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEHexo%E6%9C%80%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[记录自己的整个 Hexo 安装 写在前面，本人用的是阿里的云服务器与 Hexo 搭建的个人博客，可以与 git 网站关联，代码可以实时上传在 git 上，云服务器是基于 Linux 系统的，如果只是单纯的想部署到云服务器上可以忽略以下的 git 相关部分，以后再试着整个全部部署在 git bash 上 这整个过程我花了好几天摸索搞好，现在写下来记录好。做这个博客本人的初衷是记录下和家人与所爱的人发生的事，以及自己学习的历程 一、环境搭建 第一步我们先安装 Node.js ，我是选择的下载压缩包然后解压然后安装 在官网下载压缩包：1wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz 解压缩：1tar -zxvf node-v8.1.2.tar.gz 安装 Node.js：1nvm install stable 第二步就是安装 Hexo 1nvm install stable &emsp;&emsp;以上的步骤的目录的可以自选，但是最好在 root 目录下 二、创建我们的完整的博客目录 确保你的 Linux 云服务器上装好了 git，如果没有请装上 git ，git安装及相关操作教程请看廖雪峰的 git 教程 第一步是选择好目录，挑好了你的建博客的地址。我们先要建 git 本地仓库的目录并且初始化 git 本地仓库 1mkdir git_blog 在该目录下初始化 git 本地仓库： 1git init 在这个 git 本地仓库的目录下建好 Hexo 博客目录并且初始化 1mkdir Hexo 1hexo init &emsp;&emsp;此时 root/git_blog 目录的文件目录结构如下： 三、测试我们的 Hexo 看能否正常打开 默认的端口号为4000，所以普通的系统我们只需要输入 http://localhost:4000 就好。 但是我们的是阿里云服务器，部署的是 Linux 系统，所以我们的测试用以下命令测试： 1curl http://localhost:4000 OK，输入上面的命令得到一堆东西，到这你的都应该和我一样没问题，当然目前用的是默认的 Hexo 主题 landscape 于是博主就开心的去了自己的 Windows 系统的 Chrome 浏览器下输入了博主自己的阿里云服务器私有ip + :4000（ip:4000）地址，结果无法访问 于是又开始了辛苦（想哭）的找问题过程 结果就是我解决啦，也明白了ip和端口号的关系！问题在于我的阿里云服务器安全组没有给4000这个端口放心，关于阿里云服务器怎么添加端口安全组请看这：阿里云服务器添加安全组配置 ps.&emsp;博主连接阿里云服务器终端是用的 Xshell 工具]]></content>
       <tags>
-        <tag>Hexo</tag>
         <tag>云服务器</tag>
         <tag>技术学习</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
