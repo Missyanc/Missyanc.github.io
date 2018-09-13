@@ -496,7 +496,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -796,7 +797,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname,
             owner: 'Missyanc',
-            repo: 'hexo_comment',
+            repo: 'Missyanc.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -811,7 +812,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     
