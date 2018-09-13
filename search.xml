@@ -10,9 +10,9 @@
     <url>%2F2018%2F09%2F12%2F%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%2F</url>
     <content type="text"><![CDATA[关于 Hexo 如何从云服务器转到 GitHub Pages+Windows 本地部署后来考虑到我的云服务器的优惠就是两年，博主现在大一，等以后大学毕业了阿里云的云服务器也不会再是9.9元/月了，而是一千多大洋，所以到时候买不买还是一个问题，于是在花了很多天捣鼓好了云服务器的配置之后毅然决然的抛弃了他转而用 GitHub Pages 部署我的 Hexo博客，毕竟想一直用下去嘛~ 先总体说一下我的大概的步骤吧 首先当然是搭建好本地环境 完成本地 Hexo 的安装和测试 把云服务器上的关于 Hexo 博客的文件夹整个拷贝到本地并且替代本地的 Hexo 文件夹 部署 Windows 本地的 Hexo 博客到 GitHub 上 这样做下来弄好之后，新的博客一点没变，所有配置依旧玩好无缺，所有博文也是丝毫不差 搭建本地环境1. 摘要，这儿是默认大家都有了 GitHub 账号，要是没有请去注册一个再来 需要安装好 Git Bash 需要安装 Node.js 需要安装 Hexo 2. 安装 Git Bash 去官网下载 Git 客户端：下载地址 安装 Git 客户端：Windows 用户直接 Next 就可以了。Mac 和 Linxu 系统的用户可通过命令方式安装，这里不详细介绍了 3. 安装 Node.js Node.js 官网 4. 创建 GitHub 仓库 登录进入 GitHub 进入创建仓库页面，这个没什么好说的 填写创建仓库信息： 仓库名称必须是：你的用户名.github.io，比如博主 GitHub 的名字为 Missyanc，仓库名称就为：Missyanc.github.io，以后再解释为什么 填写好相关信息，点击 Create repository(创建仓库) 按钮。 5. 配置 SSH 打开 Git Bash 终端 设置 user name 和 email： 12$ git config --global user.name &quot;你的GitHub用户名&quot;$ git config --global user.email &quot;你的GitHub注册邮箱&quot; 一般情况下是不需要密码的，所以，接下来直接回车就好 此时，在用户文件夹下就会有一个新的文件夹.ssh，里面有刚刚创建的 ssh 密钥文件 id_rsa 和 id_rsa.pub 注：id_rsa 文件是私钥，要妥善保管，id_rsa.pub 是公钥文件。 添加公钥到 github：点击用户头像，然后点击显示的 Settings(设置) 选项 在用户设置栏，点击 SSH and GPG keys 选项，然后点击 New SSH key(新建 SSH) 按钮 Titel 可以随便取一个，将 id_rsa.pub 中的内容复制到 Key 文本框中，然后点击 Add SSH key(添加 SSH) 按钮 可以测试一下 SSH ： 1$ ssh -T git@github.com 以上搭建本地环境完成 本地 Hexo 的安装和测试1.新建博客文件夹：这里就取名为 blog1mkdir blog 2.安装 Hexo 先进入到 blog 目录 1cd blog 安装 Hexo 1npm install hexo-cli -g 初始话 Hexo 1hexo init 启动测试 Hexo 是否安装初始化成功 12hexo ghexo s 启动之后，打开浏览器，在地址栏输入：http://localhost:4000，你会看到 Hexo 的示例页面 Hexo 把云服务器上的关于 Hexo 博客的文件夹整个拷贝到本地把云服务器上原本的 Hexo 博客文件夹拷贝下来 注：博主用的与云服务器终端连接的工具为 Xshell，传输文件的为 Xftp 找到云服务器的文件夹，然后传输下来，如下图： 等到该文件夹下载完毕把该文件夹下所有的文件拷贝替代原本本地博客 blog 下的所有文件 现在在 Git Bash 上输入： 12# 清除缓存hexo clean 然后再如上启动 Hexo，并且打开浏览器，在地址栏输入：http://localhost:4000看是否为你的云服务器上的 Hexo 12hexo ghexo s 部署 Windows 本地的 Hexo 博客到 GitHub 上 编辑配置文件，关联远程仓库。在编辑器中打开 Hexo 配置文件_config.yml，找到下面内容： 1234# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: 添加 github 仓库信息： 123456# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: git repo: git@github.com:Missyanc/Missyanc.github.io.git #github仓库地址 branch: master # github分支 把其中repo字段的值替换成你的github pages提交代码的 git 地址 别告诉我你不知道你的 github pages 的 git 提交地址。就是你刚刚创建那个github pages仓库的地址 注意：type、repo、branch 的前面有两个空格，后面的: 后面有一个空格 安装 git 插件 1npm install hexo-deployer-git --save 如果没有安装 git 插件，会有错误提示，安装后重新部署就可以了 部署 1hexo d 如果没有意外，部署就成功了，可以打开 https://你的用户名.github.io 查看 ps.&emsp;hexo 命令缩写 hexo g：hexo generate hexo c：hexo clean hexo s：hexo server hexo d：hexo deploy 耶，大功告成！接下来就是搞我的 Hexo 配置啦]]></content>
       <tags>
+        <tag>Hexo</tag>
         <tag>云服务器</tag>
         <tag>技术学习</tag>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -34,9 +34,9 @@
     <url>%2F2018%2F09%2F11%2F%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEHexo%E6%9C%80%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[记录自己的整个 Hexo 安装 写在前面，本人用的是阿里的云服务器与 Hexo 搭建的个人博客，可以与 git 网站关联，代码可以实时上传在 git 上，云服务器是基于 Linux 系统的，如果只是单纯的想部署到云服务器上可以忽略以下的 git 相关部分，以后再试着整个全部部署在 git bash 上 这整个过程我花了好几天摸索搞好，现在写下来记录好。做这个博客本人的初衷是记录下和家人与所爱的人发生的事，以及自己学习的历程 一、环境搭建 第一步我们先安装 Node.js ，我是选择的下载压缩包然后解压然后安装 在官网下载压缩包：1wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz 解压缩：1tar -zxvf node-v8.1.2.tar.gz 安装 Node.js：1nvm install stable 第二步就是安装 Hexo 1nvm install stable &emsp;&emsp;以上的步骤的目录的可以自选，但是最好在 root 目录下 二、创建我们的完整的博客目录 确保你的 Linux 云服务器上装好了 git，如果没有请装上 git ，git安装及相关操作教程请看廖雪峰的 git 教程 第一步是选择好目录，挑好了你的建博客的地址。我们先要建 git 本地仓库的目录并且初始化 git 本地仓库 1mkdir git_blog 在该目录下初始化 git 本地仓库： 1git init 在这个 git 本地仓库的目录下建好 Hexo 博客目录并且初始化 1mkdir Hexo 1hexo init &emsp;&emsp;此时 root/git_blog 目录的文件目录结构如下： 三、测试我们的 Hexo 看能否正常打开 默认的端口号为4000，所以普通的系统我们只需要输入 http://localhost:4000 就好。 但是我们的是阿里云服务器，部署的是 Linux 系统，所以我们的测试用以下命令测试： 1curl http://localhost:4000 OK，输入上面的命令得到一堆东西，到这你的都应该和我一样没问题，当然目前用的是默认的 Hexo 主题 landscape 于是博主就开心的去了自己的 Windows 系统的 Chrome 浏览器下输入了博主自己的阿里云服务器私有ip + :4000（ip:4000）地址，结果无法访问 于是又开始了辛苦（想哭）的找问题过程 结果就是我解决啦，也明白了ip和端口号的关系！问题在于我的阿里云服务器安全组没有给4000这个端口放心，关于阿里云服务器怎么添加端口安全组请看这：阿里云服务器添加安全组配置 ps.&emsp;博主连接阿里云服务器终端是用的 Xshell 工具]]></content>
       <tags>
+        <tag>Hexo</tag>
         <tag>云服务器</tag>
         <tag>技术学习</tag>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
