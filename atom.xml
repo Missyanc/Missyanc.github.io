@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://missyanc.github.io/"/>
-  <updated>2018-09-17T09:30:50.160Z</updated>
+  <updated>2018-09-17T09:43:27.178Z</updated>
   <id>https://missyanc.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>50.pow_xn</title>
+    <title>50.pow(x,n)</title>
     <link href="https://missyanc.github.io/2018/09/17/50-pow-xn/"/>
     <id>https://missyanc.github.io/2018/09/17/50-pow-xn/</id>
     <published>2018-09-17T08:50:45.000Z</published>
-    <updated>2018-09-17T09:30:50.160Z</updated>
+    <updated>2018-09-17T09:43:27.178Z</updated>
     
     <content type="html"><![CDATA[<h1 id="50-Pow-x-n"><a href="#50-Pow-x-n" class="headerlink" title="50.Pow(x,n)"></a>50.Pow(x,n)</h1><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>Implement <em>pow(x, n)</em>, which calculates x raised to the power n(x^n)</p><a id="more"></a><h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.00000, 10</span><br><span class="line">Output: 1024.00000</span><br></pre></td></tr></table></figure><h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.10000, 3</span><br><span class="line">Output: 9.26100</span><br></pre></td></tr></table></figure><h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a>Example 3:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.00000, -2</span><br><span class="line">Output: 0.25000</span><br><span class="line">Explanation: 2^-2 = 1/2^2 = 1/4 = 0.25</span><br></pre></td></tr></table></figure><h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul><li>-100.0 &lt; x &lt; 100.0</li><li>n is a 32-bit signed integer, within the range [−2^31, 2^31 − 1]</li></ul><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我的第一想法是用迭代，用一个变量 result 保存结果然后:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (n &gt; 0)</span><br><span class="line">    for (int i =0 ;i &lt; n;i++) result = result * x;</span><br><span class="line">else if (n &lt; 0)</span><br><span class="line">    for (int i =0 ;i &lt; -n;i++) result = result * (1/x);</span><br><span class="line">else return result = 1;</span><br></pre></td></tr></table></figure><p>ok,看完发现没问题，submit！</p><p>Ouch！超时了，完蛋，明显不行。</p><p>换一个思路：<strong>递归</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">double res = 0;</span><br><span class="line">if (n == 0) return 1;</span><br><span class="line">if (n &lt; 0)&#123;</span><br><span class="line">    n = -n;</span><br><span class="line">    x = 1 / x;</span><br><span class="line">    &#125;</span><br><span class="line">return (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2);</span><br></pre></td></tr></table></figure><p>ok，没问题，submit！</p><p>Ouch！说当输入是 <code>(2,Integer.MIN_VALUE)</code>  时返回了一个 <code>Infinity</code> ,查了查发现这是说无限。</p><p>emmmm 开始去查资料找原因，发现是代码第4行，<code>-n</code> 超过了值，java 中整型的数 最大为 <code>2^31 - 1</code> 而  <code>-Integer.MIN_VALUE</code> 恰好比 <code>2^31 - 1</code> 多 1，所以越界</p><p>于是终极 <strong>Accepted代码为</strong>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static double pow(double x,int n)&#123;</span><br><span class="line">   double res = 0;</span><br><span class="line">   if (n &lt; 0)&#123;</span><br><span class="line">       n = -(n + 1);</span><br><span class="line">       x = 1 / x;</span><br><span class="line">       res = (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2);</span><br><span class="line">       return  res * x;</span><br><span class="line">       &#125;else</span><br><span class="line">   return (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>————————————-分界线：知识补充————————————</p><p>问题解决，发现是自己的基础知识不够引起的，于是开始补习：</p><h3 id="Java-中的整型"><a href="#Java-中的整型" class="headerlink" title="Java 中的整型"></a>Java 中的整型</h3><p>Java 中有四种整型数据，分别是 <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>。 它们的区别表现在单个数据所占的字节数以及取值范围的不同。具体见下表:</p><table><thead><tr><th>类型</th><th>字节数</th><th>取值范围</th></tr></thead><tbody><tr><td>byte</td><td>1</td><td>-128~127</td></tr><tr><td>short</td><td>2</td><td>-32768~32767</td></tr><tr><td>int</td><td>4</td><td>-2147483648~2147483647</td></tr><tr><td>long</td><td>8</td><td>-9223372036854775808~9223372036854775807</td></tr></tbody></table><p>值得一提的是，在 <code>Java</code>中，没有无符号位的整型数据，即所有的整型数据都是可以表示正数和负数的</p><h3 id="Java-中的进制"><a href="#Java-中的进制" class="headerlink" title="Java 中的进制"></a>Java 中的进制</h3><p>和其他编程语言一样，Java 中常用的进制位二进制、八进制、十进制、十六进制。其实八进制也不是太经常使用</p><h4 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h4><p>二进制的表示只包含 0 和 1 两种符号。在 Java 中，二进制的表示格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int x = 0b10101010</span><br></pre></td></tr></table></figure><p>即在二进制数前面加了 <code>0b</code></p><h4 id="八进制"><a href="#八进制" class="headerlink" title="八进制"></a>八进制</h4><p>八进制的表示包含 0、1、2、3、4、5、6、7 这八种符号。在 Java 中，八进制的表示格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int x = 01010101010</span><br></pre></td></tr></table></figure><p>即在八进制数前面加了 <code>0</code>. 显然这种表示方法很容易弄混，一定得小心对待</p><h4 id="十进制"><a href="#十进制" class="headerlink" title="十进制"></a>十进制</h4><p>十进制即为日常数字使用的进制，它的表示包含 0、1、2、3、4、5、6、7、8、9 这十种符号。十进制的表示不需要特别的格式，和平时使用的数字表示一样</p><h4 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h4><p>十六进制的表示包含 0、1、2、3、4、5、6、7、8、9、a、b、c、d、e、f 这十六中符号。在 Java 中，十六进制的表示格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int x = 0x10101010</span><br></pre></td></tr></table></figure><p>即在十六进制数前加 <code>0x</code>.<br>在任何进制表示的数字后面加上符号 <code>L</code> 即表示该数字为 <code>long</code> 型。此外， 从 <code>Java7</code> 以后，表示二进制、八进制、十进制、十六进制数的时候，可以在数中添加下划线以方便阅读。经过尝试，发现在数的最前面和最后面添加下划线是会报错的，即下划线只能添加在数的中间，不能加在数字的两端</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a = 0b1010_1010</span><br><span class="line">int b = 01010_1010</span><br><span class="line">int c = 1010_1010</span><br><span class="line">int d = 0x1010_1010</span><br></pre></td></tr></table></figure><hr>]]></content>
     
@@ -130,9 +130,9 @@
     
       <category term="Hexo" scheme="https://missyanc.github.io/tags/Hexo/"/>
     
-      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="云服务器" scheme="https://missyanc.github.io/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -176,9 +176,9 @@
       <category term="云服务器" scheme="https://missyanc.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="云服务器" scheme="https://missyanc.github.io/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -206,9 +206,9 @@
     
       <category term="Hexo" scheme="https://missyanc.github.io/tags/Hexo/"/>
     
-      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="云服务器" scheme="https://missyanc.github.io/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="技术学习" scheme="https://missyanc.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
