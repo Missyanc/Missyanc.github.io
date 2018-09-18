@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[49. Group Anagrams]]></title>
+    <url>%2F2018%2F09%2F18%2FAnagrams%2F</url>
+    <content type="text"><![CDATA[49. Group Anagrams问题描述：Given an array of strings, group anagrams together. Example：1234567Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],Output:[ [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;], [&quot;nat&quot;,&quot;tan&quot;], [&quot;bat&quot;]] Note： All inputs will be in lowercase. The order of your output does not matter. 问题分析：分析：Two strings are anagrams if and only if their sorted strings are equal. 用 Map 实现：维护一个 map ans : {String -&gt; List} ，每一个 Key 为一个排序好的 string，并且每一个 value 为从最初输入的字符串 Lis 里排序了且 equal to Key 的 List Java代码实现：1234567891011121314151617public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs)&#123; if (strs.length == 0) return new ArrayList(); Map&lt;String,List&gt; ans = new HashMap&lt;String, List&gt;(); for (String s: strs)&#123; char[] chars = s.toCharArray(); Arrays.sort(chars); // 把他们排序 for (char c : chars) System.out.print(c); System.out.println(); String key = String.valueOf(chars); if (!ans.containsKey(key)) ans.put(key,new ArrayList()); ans.get(key).add(s); &#125; return new ArrayList(ans.values());//返回所有的 List&lt;String&gt; &#125; Ouch！Accepted！]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[50.pow(x,n)]]></title>
     <url>%2F2018%2F09%2F17%2F50-pow-xn%2F</url>
     <content type="text"><![CDATA[50.Pow(x,n)问题描述：Implement pow(x, n), which calculates x raised to the power n(x^n) Example 1:12Input: 2.00000, 10Output: 1024.00000 Example 2:12Input: 2.10000, 3Output: 9.26100 Example 3:123Input: 2.00000, -2Output: 0.25000Explanation: 2^-2 = 1/2^2 = 1/4 = 0.25 Note: -100.0 &lt; x &lt; 100.0 n is a 32-bit signed integer, within the range [−2^31, 2^31 − 1] 分析我的第一想法是用迭代，用一个变量 result 保存结果然后: 12345if (n &gt; 0) for (int i =0 ;i &lt; n;i++) result = result * x;else if (n &lt; 0) for (int i =0 ;i &lt; -n;i++) result = result * (1/x);else return result = 1; ok,看完发现没问题，submit！ Ouch！超时了，完蛋，明显不行。 换一个思路：递归 1234567double res = 0;if (n == 0) return 1;if (n &lt; 0)&#123; n = -n; x = 1 / x; &#125;return (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2); ok，没问题，submit！ Ouch！说当输入是 (2,Integer.MIN_VALUE) 时返回了一个 Infinity ,查了查发现这是说无限。 emmmm 开始去查资料找原因，发现是代码第4行，-n 超过了值，java 中整型的数 最大为 2^31 - 1 而 -Integer.MIN_VALUE 恰好比 2^31 - 1 多 1，所以越界 于是终极 Accepted代码为： 12345678910public static double pow(double x,int n)&#123; double res = 0; if (n &lt; 0)&#123; n = -(n + 1); x = 1 / x; res = (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2); return res * x; &#125;else return (n % 2 == 0) ? pow(x*x,n/2) : x * pow(x*x,n/2); &#125; ————————————-分界线：知识补充———————————— 问题解决，发现是自己的基础知识不够引起的，于是开始补习： Java 中的整型Java 中有四种整型数据，分别是 byte, short, int, long。 它们的区别表现在单个数据所占的字节数以及取值范围的不同。具体见下表: 类型 字节数 取值范围 byte 1 -128~127 short 2 -32768~32767 int 4 -2147483648~2147483647 long 8 -9223372036854775808~9223372036854775807 值得一提的是，在 Java中，没有无符号位的整型数据，即所有的整型数据都是可以表示正数和负数的 Java 中的进制和其他编程语言一样，Java 中常用的进制位二进制、八进制、十进制、十六进制。其实八进制也不是太经常使用 二进制二进制的表示只包含 0 和 1 两种符号。在 Java 中，二进制的表示格式为： 1int x = 0b10101010 即在二进制数前面加了 0b 八进制八进制的表示包含 0、1、2、3、4、5、6、7 这八种符号。在 Java 中，八进制的表示格式为： 1int x = 01010101010 即在八进制数前面加了 0. 显然这种表示方法很容易弄混，一定得小心对待 十进制十进制即为日常数字使用的进制，它的表示包含 0、1、2、3、4、5、6、7、8、9 这十种符号。十进制的表示不需要特别的格式，和平时使用的数字表示一样 十六进制十六进制的表示包含 0、1、2、3、4、5、6、7、8、9、a、b、c、d、e、f 这十六中符号。在 Java 中，十六进制的表示格式为： 1int x = 0x10101010 即在十六进制数前加 0x.在任何进制表示的数字后面加上符号 L 即表示该数字为 long 型。此外， 从 Java7 以后，表示二进制、八进制、十进制、十六进制数的时候，可以在数中添加下划线以方便阅读。经过尝试，发现在数的最前面和最后面添加下划线是会报错的，即下划线只能添加在数的中间，不能加在数字的两端 1234int a = 0b1010_1010int b = 01010_1010int c = 1010_1010int d = 0x1010_1010]]></content>
@@ -45,8 +57,8 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-        <tag>云服务器</tag>
         <tag>技术学习</tag>
+        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -62,8 +74,8 @@
         <category>云服务器</category>
       </categories>
       <tags>
-        <tag>云服务器</tag>
         <tag>技术学习</tag>
+        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -75,8 +87,8 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-        <tag>云服务器</tag>
         <tag>技术学习</tag>
+        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
