@@ -113,18 +113,18 @@
 
 
 
-  <meta name="description" content="49. Group Anagrams问题描述：Given an array of strings, group anagrams together. Example：1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],">
-<meta name="keywords" content="算法,Leetcode">
+  <meta name="description" content="第一章 认识数据分析与 R 语言数据分析数据分析是指用适当的统计分析方法对收集来的大量数据进行分析，提取有用信息和形成结论而对数据加以详细研究和概括总结的过程">
+<meta name="keywords" content="R 语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="49. Group Anagrams">
-<meta property="og:url" content="https://missyanc.github.io/2018/09/18/Anagrams/index.html">
+<meta property="og:title" content="R-first-chapter">
+<meta property="og:url" content="https://missyanc.github.io/2018/09/19/R-first-chapter/index.html">
 <meta property="og:site_name" content="言小姐">
-<meta property="og:description" content="49. Group Anagrams问题描述：Given an array of strings, group anagrams together. Example：1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],">
+<meta property="og:description" content="第一章 认识数据分析与 R 语言数据分析数据分析是指用适当的统计分析方法对收集来的大量数据进行分析，提取有用信息和形成结论而对数据加以详细研究和概括总结的过程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-18T15:05:58.785Z">
+<meta property="og:updated_time" content="2018-09-19T03:27:11.269Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="49. Group Anagrams">
-<meta name="twitter:description" content="49. Group Anagrams问题描述：Given an array of strings, group anagrams together. Example：1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],">
+<meta name="twitter:title" content="R-first-chapter">
+<meta name="twitter:description" content="第一章 认识数据分析与 R 语言数据分析数据分析是指用适当的统计分析方法对收集来的大量数据进行分析，提取有用信息和形成结论而对数据加以详细研究和概括总结的过程">
 
 
 
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="https://missyanc.github.io/2018/09/18/Anagrams/"/>
+  <link rel="canonical" href="https://missyanc.github.io/2018/09/19/R-first-chapter/"/>
 
 
 
@@ -143,7 +143,7 @@
   };
 </script>
 
-  <title>49. Group Anagrams | 言小姐</title>
+  <title>R-first-chapter | 言小姐</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://missyanc.github.io/2018/09/18/Anagrams/">
+    <link itemprop="mainEntityOfPage" href="https://missyanc.github.io/2018/09/19/R-first-chapter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Missyanc">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">49. Group Anagrams
+          <h1 class="post-title" itemprop="name headline">R-first-chapter
               
             
           </h1>
@@ -360,7 +360,7 @@
                 
               
 
-              <time title="创建时间：2018-09-18 22:59:49 / 修改时间：23:05:58" itemprop="dateCreated datePublished" datetime="2018-09-18T22:59:49+08:00">2018-09-18</time>
+              <time title="创建时间：2018-09-19 11:25:21 / 修改时间：11:27:11" itemprop="dateCreated datePublished" datetime="2018-09-19T11:25:21+08:00">2018-09-19</time>
             
 
             
@@ -382,7 +382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R-语言/" itemprop="url" rel="index"><span itemprop="name">R 语言</span></a></span>
 
                 
                 
@@ -424,17 +424,134 @@
       
 
       
-        <h1 id="49-Group-Anagrams"><a href="#49-Group-Anagrams" class="headerlink" title="49. Group Anagrams"></a>49. Group Anagrams</h1><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>Given an array of strings, group anagrams together.</p>
-<h4 id="Example："><a href="#Example：" class="headerlink" title="Example："></a>Example：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+        <h2 id="第一章-认识数据分析与-R-语言"><a href="#第一章-认识数据分析与-R-语言" class="headerlink" title="第一章 认识数据分析与 R 语言"></a>第一章 认识数据分析与 R 语言</h2><h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><p>数据分析是指用适当的统计分析方法对收集来的大量数据进行分析，提取有用信息和形成结论而对数据加以详细研究和概括总结的过程</p>
 <a id="more"></a>
-<h4 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h4><ul>
-<li>All inputs will be in lowercase.</li>
-<li>The order of your output does not matter.</li>
+<h4 id="数据分析的原则："><a href="#数据分析的原则：" class="headerlink" title="数据分析的原则："></a>数据分析的原则：</h4><ol>
+<li>数据分析是为了验证假设的问题，必须提供必要的数据验证。即构建完分析模型后，需要利用测试数据验证模型正确性。</li>
+<li>数据分析是为了发现更多问题，并找到深层次原因</li>
+<li>不能为了做数据分析而分析。必须有明确的问题或目</li>
+</ol>
+<h4 id="数据分析的步骤"><a href="#数据分析的步骤" class="headerlink" title="数据分析的步骤"></a>数据分析的步骤</h4><ol>
+<li><p>探索性数据分析</p>
+<p> 找到数据中隐含信息；探索规律性的可能的形式（探索方向和方式）；通常需要数据清洗和整合</p>
+</li>
+<li><p>模型选定分析</p>
+<p> 通过定量分析，提出一类或几类可能的模型；再进一步分析，确定一类适合的模型</p>
+</li>
+<li><p>推断分析</p>
+<p> 使用数理统计方法， 对所确定模型或估计的可靠程度和精度做出推断</p>
+</li>
+</ol>
+<h4 id="传统数据分析过程"><a href="#传统数据分析过程" class="headerlink" title="传统数据分析过程"></a>传统数据分析过程</h4><ol>
+<li>明确目标</li>
+<li>搜集数据</li>
+<li><p>加工整理</p>
+<p> 缺失值处理、数据分组、数据取值转换……</p>
+</li>
+<li>选择方法</li>
+<li>解释结果</li>
+</ol>
+<h4 id="“大数据”分析过程"><a href="#“大数据”分析过程" class="headerlink" title="“大数据”分析过程"></a>“大数据”分析过程</h4><ol>
+<li>数据采集</li>
+<li><p>预处理</p>
+<p> 数据清洗等。</p>
+</li>
+<li><p>统计和分析</p>
+<p> 可以满足大多数常见的分析需求</p>
+</li>
+<li><p>数据挖掘</p>
+<p> 与统计分析不同，数据挖掘一般没有什么预先设定好的主题</p>
+</li>
+</ol>
+<h3 id="R-语言简介"><a href="#R-语言简介" class="headerlink" title="R 语言简介"></a>R 语言简介</h3><ul>
+<li><p>R是用于统计分析和绘图的编程语言和软件环境</p>
+</li>
+<li><p>R是 GNU 包，因此是自由软件。源码使用 C、Fortran 和 R 进行编写</p>
+</li>
 </ul>
-<h3 id="问题分析："><a href="#问题分析：" class="headerlink" title="问题分析："></a>问题分析：</h3><p>分析：<strong>Two strings are anagrams if and only if their sorted strings are equal</strong>.</p>
-<p>用 Map 实现：维护一个 map <code>ans : {String -&gt; List}</code> ，每一个 <code>Key</code> 为一个排序好的 <code>string</code>，并且每一个 <code>value</code> 为从最初输入的字符串 <code>Lis</code> 里排序了且 <code>equal to Key</code> 的 <code>List</code></p>
-<h3 id="Java代码实现："><a href="#Java代码实现：" class="headerlink" title="Java代码实现："></a>Java代码实现：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public  List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs)&#123;</span><br><span class="line">        if (strs.length == 0) return new ArrayList();</span><br><span class="line">        Map&lt;String,List&gt; ans = new HashMap&lt;String, List&gt;();</span><br><span class="line"></span><br><span class="line">        for (String s: strs)&#123;</span><br><span class="line">            char[] chars = s.toCharArray();</span><br><span class="line">            Arrays.sort(chars); // 把他们排序</span><br><span class="line">            String key = String.valueOf(chars);</span><br><span class="line">            if (!ans.containsKey(key))</span><br><span class="line">                ans.put(key,new ArrayList());</span><br><span class="line">            ans.get(key).add(s);</span><br><span class="line">        &#125;</span><br><span class="line">        return new ArrayList(ans.values());//返回所有的 List&lt;String&gt;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Ouch！Accepted！</strong></p>
+<h4 id="R语言历史"><a href="#R语言历史" class="headerlink" title="R语言历史"></a>R语言历史</h4><ul>
+<li>R语言是S语言的一种方言</li>
+<li>1976年，贝尔实验室的John Chambers 开发S语言，以替代昂贵的 SPSS 和 SAS 工具</li>
+<li>1992年，新西兰奥克兰大学两位统计学教授 Ross Ihaka 和 Robert Gentleman 开发，Chambers 也是开发成员</li>
+</ul>
+<h4 id="R-的优势"><a href="#R-的优势" class="headerlink" title="R 的优势"></a>R 的优势</h4><ul>
+<li>统计学家发明的：全面的统计研究平台，提供格式各样的数据分析技术</li>
+<li>开源：可以自己修改（包和函数）；免费</li>
+<li><strong>交互式数据分析</strong> <code>why？？？</code></li>
+<li>可以从多中数据源导入数据，存在 bug</li>
+<li>新算法（新的包）会迅速在R中实现</li>
+<li>轻量级，安装文件小（不超过100M）</li>
+<li>兼容不同的OS</li>
+</ul>
+<h4 id="R的劣势"><a href="#R的劣势" class="headerlink" title="R的劣势"></a>R的劣势</h4><ul>
+<li>统计学家发明的：语法和一般程序设计语言差别很大，学习曲线陡峭，对于程序员来说“奇怪的”术语</li>
+<li>开源导致 package 的质量、版本兼容性等问题</li>
+<li>内存管理、速度与效率问题</li>
+<li>不能直接利用R开发应用程序</li>
+</ul>
+<h4 id="R-的获取和安装"><a href="#R-的获取和安装" class="headerlink" title="R 的获取和安装"></a>R 的获取和安装</h4><ul>
+<li>R 可以在 <code>CRAN（Comprehensive RArchive Network）http://cran.r-project.org</code> 上免费下载。Linux、Mac OS X 和 Windows 都有相应编译好的二进制版本</li>
+</ul>
+<h4 id="R的使用"><a href="#R的使用" class="headerlink" title="R的使用"></a>R的使用</h4><ul>
+<li>R是一种区分大小写的解释型语言 eg.<em>shell</em></li>
+<li><p>R中的多数功能是由程序内置函数和用户自编函数提供的，一次交互式会话期间的所有数据对象都被保存在内存中。一些基本函数是默认直接可用的，而其他高级函数则包含于按需加载的程序包中</p>
+<blockquote>
+<p><strong>什么是解释性语言、脚本语言。一行一行的解释</strong></p>
+</blockquote>
+</li>
+<li><p>R语句由函数和赋值构成。R使用 &lt;-，而不是传统的 = 作为赋值符号。注释由符号 # 开头</p>
+<blockquote>
+<p>x = x + 1 与 x &lt;- x + 1，前者不科学</p>
+</blockquote>
+</li>
+<li>Windows 从开始菜单中启动R。Mac需要双击应用程序文件夹中的R图标。Linux 在终端命令提示符下敲入R并回车</li>
+</ul>
+<p>一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Listing 1.1 - A Sample R session</span><br><span class="line">age &lt;- c(1,3,5,2,11,9,3,9,12,3)</span><br><span class="line">weight&lt;-c(4.4,5.3,7.2,5.2,8.5,7.3,6.0,10.4,10.2,6.1)</span><br><span class="line">mean(weight) #均值</span><br><span class="line">sd(weight) #标准差</span><br><span class="line">cor(age,weight) #相关度</span><br><span class="line">plot(age,weight) #画图</span><br></pre></td></tr></table></figure>
+<h4 id="R-获取帮助"><a href="#R-获取帮助" class="headerlink" title="R 获取帮助"></a>R 获取帮助</h4><ul>
+<li>R的内置帮助系统提供了当前已安装包中所有函数的细节、参考文献以及使用示例<ul>
+<li><code>help.start()</code> 打开帮助文档首页</li>
+<li><code>help(&quot;foo&quot;)或?foo</code> 查看函数 <code>foo</code> 的帮助（引号可以省略）</li>
+<li><code>help.search(&quot;foo&quot;)</code> 或 <code>??foo</code> 以 <code>foo</code>为关键词搜索本地帮助文档</li>
+<li><code>example(&quot;foo&quot;)</code> 函数 <code>foo</code> 的使用示例（引号可以省略）</li>
+<li><code>RSiteSearch(&quot;foo&quot;)</code> 以 <code>foo</code> 为关键词搜索在线文档和邮件列表存档</li>
+<li><code>apropos(&quot;foo&quot;, mode=&quot;function&quot;)</code> 列出名称中含有 <code>foo</code> 的所有可用函数</li>
+<li><code>data()</code> 列出当前已加载包中所含的所有可用示例数据集</li>
+<li><code>vignette()</code> 列出当前已安装包中所有可用的 vignette 文档(一般是 PDF 文章)</li>
+<li><code>vignette(&quot;foo&quot;)</code> 为主题 <code>foo</code> 显示指定的 vignette 文档</li>
+</ul>
+</li>
+</ul>
+<h4 id="工作空间（workspace）"><a href="#工作空间（workspace）" class="headerlink" title="工作空间（workspace）"></a>工作空间（workspace）</h4><ul>
+<li><p>工作空间就是当前R的工作环境，它储存着所有用户定义的对象（向量、矩阵、函数、数据框、列表。可以将当前工作空间保存到一个镜像中，并在下次启动R时自动载入它</p>
+</li>
+<li><p>当前的工作**目录（working directory）是 R 用来读取文件和保存结果的默认目录</p>
+</li>
+</ul>
+<h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><ul>
+<li>输入：函数 <code>source(&quot;filename&quot;)</code> 可在当前会话中执行一个脚本</li>
+<li>文本输出：函数 <code>sink(&quot;filename&quot;)</code> 将输出重定向到文件filename中</li>
+<li>图形输出</li>
+</ul>
+<h4 id="包（package）"><a href="#包（package）" class="headerlink" title="包（package）"></a>包（package）</h4><ul>
+<li>包是R函数、数据、预编译代码以一种定义完善的格式组成的集合。计算机上存储包的目录称为库（library）。</li>
+<li>函数 <code>library()</code> 则可以显示库中有哪些包</li>
+<li>目前有 2500 多个包可从 <code>http://cran.rproject.org/web/packages</code>下载。这些包提供了横跨各种领域的新功能，包括分析地理数据、处理蛋白质质谱，甚至是心理测验分析的功能</li>
+</ul>
+<ol>
+<li>包的安装</li>
+</ol>
+<ul>
+<li>执行 <code>install.packages()</code> 将显示一个 CRAN 镜像站点的列表，选择其中一个镜像站点之后，将看到所有可用包的列表，选择其中的一个包即可进行下载和安装</li>
+<li>例如，可以用可以使用命令 <code>install.packages(&quot;gclus&quot;)</code> 来下载和安装 gclus 包（注意有引号）。</li>
+</ul>
+<ol start="2">
+<li>包的载入</li>
+</ol>
+<ul>
+<li>要在R会话中使用包，需要用 <code>library()</code> 命令载入这个包</li>
+<li>例如，要使用 gclus 包，执行命令 <code>library(gclus)</code> 即可（注意没有引号）</li>
+</ul>
 
       
     </div>
@@ -455,9 +572,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
-          
-            <a href="/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+            <a href="/tags/R-语言/" rel="tag"><i class="fa fa-tag"></i> R 语言</a>
           
         </div>
       
@@ -470,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/17/50-pow-xn/" rel="next" title="50.pow(x,n)">
-                <i class="fa fa-chevron-left"></i> 50.pow(x,n)
+              <a href="/2018/09/18/Anagrams/" rel="next" title="49. Group Anagrams">
+                <i class="fa fa-chevron-left"></i> 49. Group Anagrams
               </a>
             
           </div>
@@ -479,10 +594,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/19/R-first-chapter/" rel="prev" title="R-first-chapter">
-                R-first-chapter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#49-Group-Anagrams"><span class="nav-number">1.</span> <span class="nav-text">49. Group Anagrams</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述："><span class="nav-number">1.0.1.</span> <span class="nav-text">问题描述：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Example：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note："><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Note：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析："><span class="nav-number">1.0.2.</span> <span class="nav-text">问题分析：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现："><span class="nav-number">1.0.3.</span> <span class="nav-text">Java代码实现：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-认识数据分析与-R-语言"><span class="nav-number">1.</span> <span class="nav-text">第一章 认识数据分析与 R 语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据分析"><span class="nav-number">1.1.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据分析的原则："><span class="nav-number">1.1.1.</span> <span class="nav-text">数据分析的原则：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据分析的步骤"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据分析的步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传统数据分析过程"><span class="nav-number">1.1.3.</span> <span class="nav-text">传统数据分析过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“大数据”分析过程"><span class="nav-number">1.1.4.</span> <span class="nav-text">“大数据”分析过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-语言简介"><span class="nav-number">1.2.</span> <span class="nav-text">R 语言简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#R语言历史"><span class="nav-number">1.2.1.</span> <span class="nav-text">R语言历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R-的优势"><span class="nav-number">1.2.2.</span> <span class="nav-text">R 的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R的劣势"><span class="nav-number">1.2.3.</span> <span class="nav-text">R的劣势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R-的获取和安装"><span class="nav-number">1.2.4.</span> <span class="nav-text">R 的获取和安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R的使用"><span class="nav-number">1.2.5.</span> <span class="nav-text">R的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R-获取帮助"><span class="nav-number">1.2.6.</span> <span class="nav-text">R 获取帮助</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作空间（workspace）"><span class="nav-number">1.2.7.</span> <span class="nav-text">工作空间（workspace）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入和输出"><span class="nav-number">1.2.8.</span> <span class="nav-text">输入和输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包（package）"><span class="nav-number">1.2.9.</span> <span class="nav-text">包（package）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
