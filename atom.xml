@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://missyanc.github.io/"/>
-  <updated>2018-09-19T03:27:11.269Z</updated>
+  <updated>2018-09-20T10:43:54.485Z</updated>
   <id>https://missyanc.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux-2018/9/20</title>
+    <link href="https://missyanc.github.io/2018/09/20/Linux-2018-9-20/"/>
+    <id>https://missyanc.github.io/2018/09/20/Linux-2018-9-20/</id>
+    <published>2018-09-20T10:42:22.000Z</published>
+    <updated>2018-09-20T10:43:54.485Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2018-9-20"><a href="#2018-9-20" class="headerlink" title="2018/9/20"></a>2018/9/20</h1><h2 id="Ch-Screen-Programing"><a href="#Ch-Screen-Programing" class="headerlink" title="Ch. Screen Programing"></a>Ch. Screen Programing</h2><p><code>refresh</code> 代价是很大的，一般是覆盖</p><p>大概过程是</p><ul><li>先打印  “helloworld_”  注意此时光标位置</li><li>再吧光标移回去 “_helloworld”</li><li>再打印 “                         ” 覆盖</li></ul><p>下一个版本 + 人机交互</p><p>给移动加上边界</p><p>usleep  $10^-6s$</p><h3 id="interval-timer（itimer）：间隔计时器，时钟编程"><a href="#interval-timer（itimer）：间隔计时器，时钟编程" class="headerlink" title="interval timer（itimer）：间隔计时器，时钟编程"></a><strong>interval timer</strong>（itimer）：间隔计时器，时钟编程</h3><p>why sleep can stop? And when a process is sleeping ,can we use other process??</p><p>时间到这是一个信号：SIGALRM，时钟信号？？</p><p><code>alarm(5)</code></p><p><code>pause()</code> 挂起一个进程</p><p>系统里面会为你提供三个间隔计时器</p><ul><li>Real ： 这是真实的时间，过去一秒就是一秒</li><li>Virtual ： 这貌似是对应用户代码的时间</li><li>Prof ： 用户代码和内核代码加起来的时间为 Prof</li></ul><p>怎么使用呢，需要设置两个时间：</p><ul><li><p>it_value ： 开始时间  <em>双精度  s,us，确保能够取到不同精度的时间</em></p></li><li><p>it_interval ： 间隔时间</p></li><li>在 Linux 中有一个结构体 itimerval 存放 it_value 与 it_interval</li><li>而 it_value 与 it_interval 也是一个结构体</li></ul><p>那究竟这个咋就厉害了？</p><p><code>ITIMER_REAL</code> 相当于一个软中断</p><p>如何实现一个弹球</p><p>关闭规则模式：</p><ul><li><p>crmode()</p></li><li><p>noecho()</p></li></ul><p>现在能够一维的移动球</p><p>但是我们希望这个球能够在二维中移动</p><hr><h2 id="Ch-Process"><a href="#Ch-Process" class="headerlink" title="Ch.Process"></a>Ch.Process</h2><p>如何查看系统上的进程</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br><span class="line">ps -l</span><br><span class="line"></span><br><span class="line">sort &amp; <span class="comment">// 可以在后台执行</span></span><br><span class="line">nice -n <span class="number">5</span> sort &amp; <span class="comment">// 加上指定的优先数</span></span><br><span class="line">renice n PID <span class="comment">// 给某 PID 的进程加上 n 的优先数 </span></span><br><span class="line"></span><br><span class="line">ps -e <span class="comment">// 查看所有的进程状态，包括后台和其他用户</span></span><br><span class="line">ps aux</span><br></pre></td></tr></table></figure><p>ps -l 得到的进程属性：</p><ul><li><p>PPID : Parent PID</p></li><li><p>PRI : 优先级，值越小，优先级越高，一般不好调整，但是可以通过优先数调整，只能增加优先级，唯有超级用户可以提高优先级</p></li><li><p>SZ : 进程占用内存大小</p></li><li><p>TTY：终端</p></li><li><p>WCHAN：状态</p></li></ul><p>进程的生与死</p><ul><li><p>单体无性繁殖</p></li><li><p>如何在一个进程里面执行一个别的进程？？</p><blockquote><p>execlp(CMD,ARG!1…);</p><p>execvp(CMD,);</p></blockquote></li></ul><p>Done 咋就不见了呢</p><p>exec 相当于换脑，把下面的换了</p><p>所以现在而言直接这样执行是不能这样执行的！</p><p>怎么办？？ <code>fork</code></p><p>./a.out &amp;</p><p>ps -l</p><p>所以现在有了办法，不能直接换脑，所以我们可以生成一个子进程给他换脑，fork</p><p>fork() 会完全复制一个父进程，包括代码状态和数据，状态就是此时代码运行到哪的状态，这个也不会变</p><p>父进程和子进程 fork 后是完全独立的，相互竞争计算机的资源</p><p>3 个 fork 是 8 个进程</p><p>但是问题来了，我们怎么知道谁是子进程谁是父进程？？</p><p>通过 fork 的返回值，是一个进程号，fork 失败返回 -1</p><p>问题来了，怎么实现父子进程的协调呢？？？比如要等子进程执行完父进程再继续？</p><p>wait()，有一个地址参数</p><p>问题来了，杀了子进程他也回来了，买菜成功？？？这可不行</p><p>用返回值实现，</p><p>status 是 16  bit的数</p><ul><li>0 - 7 ： exit value (0 - 255)</li><li>8 : core dump</li><li>9 - 16 : signal</li></ul><p>Linux 在终端敲命令其实是 shell 的一个 fork</p><p>1 号进程为 init 进程，是所有进程的父进程，如果我们杀了 cook （父）进程，那么  shopping 进程则会吧 init 进程作为父进程，此时被杀了父进程的 shopping 进程也叫<strong>孤儿进程</strong></p><p><strong>Zombie 进程</strong>：僵尸进程(defunct)，没有调用 wait() 进程回收</p><p>SIGCHLD 为忽略僵尸进程</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;2018-9-20&quot;&gt;&lt;a href=&quot;#2018-9-20&quot; class=&quot;headerlink&quot; title=&quot;2018/9/20&quot;&gt;&lt;/a&gt;2018/9/20&lt;/h1&gt;&lt;h2 id=&quot;Ch-Screen-Programing&quot;&gt;&lt;a href=&quot;#Ch-Sc
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://missyanc.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://missyanc.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>R-first-chapter</title>
